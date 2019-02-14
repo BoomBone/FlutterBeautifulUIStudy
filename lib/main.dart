@@ -36,17 +36,33 @@ class ChatScreenState extends State<ChatScreen> {
   }
 
   Widget _buildTextComposer() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8.0),
-      child: TextField(
-        controller: _textController,
-        onSubmitted: _handleSubmitted,
-        decoration: InputDecoration.collapsed(hintText: "Send a message"),
+    return IconTheme(
+      data: IconThemeData(color: Theme.of(context).accentColor),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: <Widget>[
+            Flexible(
+              child: TextField(
+                controller: _textController,
+                onSubmitted: _handleSubmitted,
+                decoration:
+                    InputDecoration.collapsed(hintText: "Send a message"),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              child: IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () => _handleSubmitted(_textController.text)),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  void _handleSubmitted(String text){
+  void _handleSubmitted(String text) {
     _textController.clear();
   }
 }
