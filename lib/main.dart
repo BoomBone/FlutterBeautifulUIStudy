@@ -22,6 +22,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -29,6 +31,22 @@ class ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text("FriendlyChat"),
       ),
+      body: _buildTextComposer(),
     );
+  }
+
+  Widget _buildTextComposer() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      child: TextField(
+        controller: _textController,
+        onSubmitted: _handleSubmitted,
+        decoration: InputDecoration.collapsed(hintText: "Send a message"),
+      ),
+    );
+  }
+
+  void _handleSubmitted(String text){
+    _textController.clear();
   }
 }
