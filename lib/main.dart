@@ -13,7 +13,15 @@ class FriendlyChatApp extends StatelessWidget {
   }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return ChatScreenState();
+  }
+}
+
+class ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
