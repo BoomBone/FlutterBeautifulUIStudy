@@ -29,12 +29,28 @@ class ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("FriendlyChat"),
       ),
-      body: _buildTextComposer(),
+      body:Column(
+        children: <Widget>[
+          Flexible(
+            child: new ListView.builder(
+                padding: EdgeInsets.all(8.0),
+                reverse: true,
+                itemCount: _message.length,
+                itemBuilder: (_,int index)=>_message[index]),
+          ),
+          new Divider(height: 1.0),
+          new Container(
+            decoration: new BoxDecoration(
+              color: Theme.of(context).cardColor
+            ),
+            child: _buildTextComposer(),
+          )
+        ],
+      ),
     );
   }
 
@@ -91,7 +107,7 @@ class ChatMessage extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(),
+            child: CircleAvatar(child: new Text(_name[0]),),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
