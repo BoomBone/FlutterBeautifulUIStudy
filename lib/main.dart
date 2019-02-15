@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(FriendlyChatApp());
 
+const String _name = "Go";
+
 class FriendlyChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class ChatScreen extends StatefulWidget {
 
 class ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
+  final List<ChatMessage> _message = <ChatMessage>[];
 
   @override
   Widget build(BuildContext context) {
@@ -64,5 +67,47 @@ class ChatScreenState extends State<ChatScreen> {
 
   void _handleSubmitted(String text) {
     _textController.clear();
+    ChatMessage message = new ChatMessage(
+      text: text,
+    );
+    setState(() {
+      _message.insert(0, message);
+    });
+  }
+}
+
+class ChatMessage extends StatelessWidget {
+  ChatMessage({this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                _name,
+                style: Theme.of(context).textTheme.subhead,
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 5.0),
+                child: Text(text),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
