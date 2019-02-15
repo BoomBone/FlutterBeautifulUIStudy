@@ -1,6 +1,8 @@
 # friend_chat
 
-A new Flutter application.
+Building Beautiful UIs with Flutter.
+学习来源：Google Codelabs(可能要科学上网)- [ Building Beautiful UIs with Flutter](https://codelabs.developers.google.com/codelabs/flutter/index.html?index=..%2F..index#0)
+
 
 ## Getting Started
 
